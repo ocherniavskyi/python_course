@@ -2,8 +2,8 @@ import os
 from files import file_utils
 
 
-path_to_json = "./resources/samples/json/test_data.json"
-path_to_xml = "./resources/samples/xml/test_data.xml"
+path_to_json = "resources/samples/json/test_data.json"
+path_to_xml = "resources/samples/xml/test_data.xml"
 
 
 def test_check_test_data_file_exists():
