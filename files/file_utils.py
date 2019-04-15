@@ -21,6 +21,8 @@ def deserialize_persons_from_json(file_path):
 
 
 def serialize_persons_to_json(persons, file_path):
+    if not os.path.exists(os.path.dirname(file_path)):
+            os.makedirs(os.path.dirname(file_path))
     with open(file_path, 'w') as file:
         json.dump(persons, file, cls=PersonEncoder)
 
