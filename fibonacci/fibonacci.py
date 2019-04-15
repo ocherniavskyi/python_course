@@ -7,7 +7,6 @@ def fill_fibonacci_numbers(position):
 
 
 def generate_fibonacci(position):
-    #position = int(position)
     if position < 1:
         raise ValueError("Value should be greater than 0")
     if len(fibonacci_numbers) < position:
