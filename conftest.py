@@ -18,5 +18,5 @@ def pytest_exception_interact(node, call, report):
     allure.attach(
         name='Screenshot',
         body=browser.driver().get_screenshot_as_png(),
-        type=attachment_type.PNG
+        attachment_type=attachment_type.PNG
     )
