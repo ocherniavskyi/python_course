@@ -5,6 +5,11 @@ orbs:
 
 jobs:
   build:
+    parameters:
+      build_allure_report:
+        type: boolean
+        default: true
+
     docker:
       - image: circleci/python:3.7.3-stretch-browsers
         environment:
@@ -14,6 +19,9 @@ jobs:
 
     steps:
       - checkout
+
+      - allure/install:
+          version: '2.12'
 
       - run:
           name: install dependencies
@@ -29,8 +37,8 @@ jobs:
             . venv/bin/activate
             pytest --alluredir ./allure-results ./tests
 
-      - allure/install:
-          version: '2.12'
-
-      - allure/report:
-          results-path: './allure-results'
+      - when:
+          condition: << parameters.build_allure_report >>
+          steps:
+            - allure/report:
+                results-path: './allure-results'
