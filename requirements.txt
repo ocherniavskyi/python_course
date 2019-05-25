@@ -7,3 +7,4 @@ allure-python-commons
 selenium
 pytest-html
 webdriver-manager
+git+https://github.com/yashaka/selene
