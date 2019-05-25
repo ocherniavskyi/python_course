@@ -1,4 +1,5 @@
 import os
+import pytest
 from files import file_utils
 
 
@@ -6,14 +7,17 @@ path_to_json = "resources/samples/json/test_data.json"
 path_to_xml = "resources/samples/xml/test_data.xml"
 
 
+@pytest.mark.phase_1_2
 def test_check_test_data_file_exists():
     assert os.path.isfile(path_to_xml), "test_data.xml does't exist"
 
 
+@pytest.mark.phase_1_2
 def test_check_test_data_file_has_valid_structure():
     assert file_utils.deserialize_persons_from_xml(path_to_xml)
 
 
+@pytest.mark.phase_1_2
 def test_check_required_fields_updated():
     file_utils.data_file_processing(path_to_xml, path_to_json)
     persons = file_utils.deserialize_persons_from_json(path_to_json)
@@ -27,6 +31,7 @@ def test_check_required_fields_updated():
         assert person.HOBBY == "updated"
 
 
+@pytest.mark.phase_1_2
 def test_check_that_json_file_created():
     if os.path.exists(path_to_json):
         os.remove(path_to_json)
@@ -34,6 +39,7 @@ def test_check_that_json_file_created():
     assert os.path.isfile(path_to_json)
 
 
+@pytest.mark.phase_1_2
 def test_check_that_json_file_content_correct():
     test_check_that_json_file_created()
     assert file_utils.deserialize_persons_from_json(path_to_json)

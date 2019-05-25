@@ -4,6 +4,7 @@ from web_tests.common_fixtures.infrustructure import *
 from conftest import *
 
 
+@pytest.mark.webui
 class TestLoginPage:
 
     def test_login_with_valid_username(self, login_page):

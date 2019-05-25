@@ -5,6 +5,7 @@ from web_tests.common_fixtures.infrustructure import *
 from conftest import *
 
 
+@pytest.mark.webui
 class TestIssuePage:
 
     def test_create_bug_with_all_mandatory_fields(self, issue_page: IssuePage, generate_summary: str):
