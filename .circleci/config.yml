@@ -30,10 +30,8 @@ jobs:
 
       - allure/install:
           version: 2.12
-          when: always
 
       - allure/report:
-          when: always
 
       - store_test_results:
           path: test-reports
