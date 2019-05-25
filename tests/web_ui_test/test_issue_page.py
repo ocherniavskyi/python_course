@@ -2,11 +2,10 @@ from selene.conditions import visible
 
 from web_tests.PageObjects.IssueListPage import IssueListPage
 from web_tests.common_fixtures.infrustructure import *
-from tests.web_ui_test.UiTest import UiTest
 from conftest import *
 
 
-class TestIssuePage(UiTest):
+class TestIssuePage:
 
     def test_create_bug_with_all_mandatory_fields(self, issue_page: IssuePage, generate_summary: str):
         issue_page.create_issue(project, 'Bug', generate_summary)

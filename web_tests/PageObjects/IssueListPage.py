@@ -1,5 +1,6 @@
 from selene.api import s, ss, by
 
+
 class IssueListPage:
     @property
     def issue_list(self):

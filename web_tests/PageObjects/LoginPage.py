@@ -2,10 +2,6 @@ from web_tests.PageObjects.BasePage import BasePage
 from selene.api import s, browser
 
 
-
-
-
-
 class LoginPage(BasePage):
 
     def open(self):

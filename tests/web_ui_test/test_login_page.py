@@ -1,14 +1,10 @@
-import pytest
 import allure
 from selene.conditions import visible, text
-
-from web_tests.common_fixtures.infrustructure import  login_page
-from tests.web_ui_test.UiTest import UiTest
-from web_tests.PageObjects.LoginPage import *
+from web_tests.common_fixtures.infrustructure import *
 from conftest import *
 
 
-class TestLoginPage(UiTest):
+class TestLoginPage:
 
     def test_login_with_valid_username(self, login_page):
         login_page.set_username(username)
