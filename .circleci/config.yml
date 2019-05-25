@@ -32,4 +32,5 @@ jobs:
       - allure/install:
           version: '2.12'
 
-      - allure/report
+      - allure/report:
+          results-path: './allure-results'
