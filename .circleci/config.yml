@@ -31,7 +31,7 @@ jobs:
       - allure/install:
           version: 2.12
 
-      - allure/report:
+      - allure/report
 
       - store_test_results:
           path: test-reports
