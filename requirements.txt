@@ -1,2 +1,9 @@
+requests
+attrs
 pytest
 lxml
+allure-pytest
+allure-python-commons
+selenium
+pytest-html
+webdriver-manager
