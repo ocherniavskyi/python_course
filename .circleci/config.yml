@@ -1,4 +1,8 @@
-version: 2
+version: 2.1
+
+orbs:
+  allure: ayte/allure@0.1.2
+
 jobs:
   build:
     docker:
@@ -22,13 +26,14 @@ jobs:
           name: run phase 1/2 tests
           command: |
             . venv/bin/activate
-            pytest --junitxml=test-reports/junit.xml -m phase_1_2 ./tests
+            pytest --alluredir ./allure-results ./tests
 
-      - run:
-          name: run tests ui tests
-          command: |
-            . venv/bin/activate
-            pytest --junitxml=test-reports/junit.xml -m webui ./tests/web_ui_test
+      - allure/install:
+          version: 2.12
+          when: always
+
+      - allure/report:
+          when: always
 
       - store_test_results:
           path: test-reports
