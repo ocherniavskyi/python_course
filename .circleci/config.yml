@@ -3,6 +3,8 @@ jobs:
   build:
     docker:
       - image: circleci/python:3.7.3-stretch-browsers
+        environment:
+          TZ: "Europe/Kiev"
 
     working_directory: ~/repo
 
