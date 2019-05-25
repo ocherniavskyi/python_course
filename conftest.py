@@ -17,6 +17,6 @@ config.reports_folder = './reports'
 def pytest_exception_interact(node, call, report):
     allure.attach(
         name='Screenshot',
-        contents=browser.driver().get_screenshot_as_png(),
+        body=browser.driver().get_screenshot_as_png(),
         type=attachment_type.PNG
     )
