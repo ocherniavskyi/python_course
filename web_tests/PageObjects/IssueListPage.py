@@ -1,4 +1,5 @@
 from selene.api import s, ss, by
+from selene.support.conditions import be
 
 
 class IssueListPage:
@@ -8,7 +9,7 @@ class IssueListPage:
 
     @property
     def found_issues(self):
-        return ss('ol.issue-list li')
+        return ss('ol.issue-list li').should_each(be.clickable)
 
     @property
     def no_issues_found(self):

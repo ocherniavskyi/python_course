@@ -26,7 +26,9 @@ class TestIssuePage:
 
     def test_search_an_issue(self, dashboard_page: DashboardPage, created_bug: dict):
         search_page = dashboard_page.search_issue(created_bug['summary'])
-        assert search_page.get_found_issues()[0] == created_bug['key']
+        found_issues = search_page.get_found_issues()
+        assert len(found_issues) == 1
+        assert found_issues()[0] == created_bug['key']
 
     def test_search_non_existence_issue(self, dashboard_page):
         search_page : IssueListPage = dashboard_page.search_issue(str(uuid.uuid4()))
