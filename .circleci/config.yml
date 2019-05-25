@@ -24,6 +24,7 @@ jobs:
 
       - run:
           name: run phase 1/2 tests
+          halt_build_on_fail: false
           command: |
             . venv/bin/activate
             pytest --alluredir ./allure-results ./tests
