@@ -1,6 +1,5 @@
-from selene.api import s, ss, by
+from selene.api import s, ss
 from selene.conditions import visible
-from selene.support.conditions import be
 
 
 class IssueListPage:
@@ -11,7 +10,6 @@ class IssueListPage:
     @property
     def found_issues(self):
         self.issue_list.should_be(visible)
-        #return ss('ol.issue-list li')
         return ss('ol.issue-list li .issue-link-key')
 
     @property
@@ -23,7 +21,6 @@ class IssueListPage:
         return s('.no-results')
 
     def get_found_issues(self):
-        #issues = [x.get_attribute('data-key') for x in self.found_issues()]
         issues = [x.text for x in self.found_issues()]
         return issues
 
