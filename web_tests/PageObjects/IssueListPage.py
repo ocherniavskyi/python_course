@@ -9,7 +9,7 @@ class IssueListPage:
 
     @property
     def found_issues(self):
-        return ss('ol.issue-list li').should_each(be.clickable)
+        return ss('ol.issue-list li')
 
     @property
     def no_issues_found(self):
