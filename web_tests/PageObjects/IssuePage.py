@@ -56,7 +56,7 @@ class IssuePage(BasePage):
         self.issue_type_list.set(issue_type).press_enter()
 
     def set_summary(self, summary):
-        self.summary_field.send_keys(summary)
+        self.summary_field.set(summary)
 
     def click_create(self):
         self.create_button.click()
