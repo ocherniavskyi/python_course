@@ -24,7 +24,9 @@ class DashboardPage(BasePage):
 
     def search_issue(self, text_to_search):
         self.quick_search_field.send_keys(text_to_search).press_enter()
-        return IssueListPage()
+        issue_page = IssueListPage()
+        issue_page.at_page()
+        return issue_page
 
     def open_create_issue_window(self):
         self.create_button.click()
