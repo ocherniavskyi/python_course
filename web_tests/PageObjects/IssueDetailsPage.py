@@ -52,5 +52,5 @@ class IssueDetailsPage:
 
     def update_assignee(self, assignee_name):
         self.assignee_selector.click()
-        self.assignee.click().set(assignee_name)
+        self.assignee.set(assignee_name)
         self.submit_button.click()
