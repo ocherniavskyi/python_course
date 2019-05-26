@@ -9,7 +9,7 @@ class HttpClient(object):
     password: str
 
     def get(self, uri, params=None):
-        return requests.get(self.base_url + uri, auth=self.get_auth(), params=params)
+        return requests.get(url=self.base_url + uri, auth=self.get_auth(), params=params)
 
     def post(self, uri, json=None, data=None):
         # headers = {'Accept': 'application/json', 'Content-Type': 'application/json'}

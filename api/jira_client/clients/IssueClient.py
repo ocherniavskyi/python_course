@@ -24,3 +24,6 @@ class IssueClient:
 
     def delete_issue(self, issue_id):
         return self.issue_service.delete_issue(issue_id)
+
+    def get_issue(self, issue_id):
+        return self.issue_service.get_issue(issue_id).json()

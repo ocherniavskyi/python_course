@@ -3,7 +3,7 @@ from selene.browser import driver
 import uuid
 
 from web_tests.PageObjects.DashboardPage import DashboardPage
-from web_tests.PageObjects.IssuePage import IssuePage
+from web_tests.PageObjects.IssueDetailsPage import IssueDetailsPage
 from web_tests.PageObjects.LoginPage import LoginPage
 from conftest import *
 
@@ -56,3 +56,7 @@ def created_bug(jira_client: JiraClient, generate_summary):
     bug['summary'] = generate_summary
     return bug
 
+
+@pytest.fixture()
+def issue_details_page(dashboard_page: DashboardPage):
+    return IssueDetailsPage()
