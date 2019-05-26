@@ -1,25 +1,20 @@
 import attr
-import requests
+from api.jira_client.services.SessionManager import SessionManager
 
 
 @attr.s(auto_attribs=True)
 class BaseService:
-    base_url: str
-    username: str
-    password: str
+
+    session: SessionManager
 
     def get(self, uri, params=None):
-        return requests.get(self.base_url + uri, auth=self.get_auth(), params=params)
+        return self.session.get(uri, params=params)
 
     def post(self, uri, json=None, data=None):
-        #headers = {'Accept': 'application/json', 'Content-Type': 'application/json'}
-        return requests.post(self.base_url + uri, auth=self.get_auth(), data=data, json=json)#, headers=headers)
+        return self.session.post(uri, data=data, json=json)
 
     def put(self, uri, json=None, data=None):
-        return requests.put(self.base_url + uri, auth=self.get_auth(), data=data, json=json)
+        return self.session.put(uri, data=data, json=json)
 
     def delete(self, uri):
-        return requests.delete(self.base_url + uri, auth=self.get_auth())
-    
-    def get_auth(self):
-        return self.username, self.password
+        return self.session.delete(uri)
