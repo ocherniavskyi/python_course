@@ -12,6 +12,7 @@ project = 'WEBINAR'
 issue_tag = 'ocher'
 config.base_url = jira_url
 config.reports_folder = './reports'
+config.timeout = 5
 
 
 def pytest_exception_interact(node, call, report):
