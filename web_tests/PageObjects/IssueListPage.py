@@ -1,4 +1,5 @@
 from selene.api import s, ss, by
+from selene.conditions import visible
 from selene.support.conditions import be
 
 
@@ -9,6 +10,7 @@ class IssueListPage:
 
     @property
     def found_issues(self):
+        s('.simple-issue-list').should_be(visible)
         #return ss('ol.issue-list li')
         return ss('ol.issue-list li .issue-link-key')
 
