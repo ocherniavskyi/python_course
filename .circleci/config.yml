@@ -2,29 +2,50 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/python:3.7
-
+    - image: circleci/python:3.7.3-stretch-browsers
+      environment:
+        TZ: Europe/Kiev
     working_directory: ~/repo
-
     steps:
-      - checkout
-
-      - run:
-          name: install dependencies
-          command: |
-            python3 -m venv venv
-            . venv/bin/activate
-            pip install -r requirements.txt
-
-      - run:
-          name: run tests
-          command: |
-            . venv/bin/activate
-            pytest --junitxml=test-reports/junit.xml ./tests
-
-      - store_test_results:
-          path: test-reports
-
-      - store_artifacts:
-          path: test-reports
-          destination: test-reports
+    - checkout
+    - run:
+        name: Allure archive download
+        command: curl -L http://repo2.maven.org/maven2/io/qameta/allure/allure-commandline/2.12.0/allure-commandline-2.12.0.zip
+          -o /tmp/allure.zip
+    - run:
+        name: Archive extraction
+        command: unzip /tmp/allure.zip
+    - run:
+        name: Allure installation
+        command: sudo mv allure-2.12.0 /usr/local/share/allure
+    - run:
+        name: Allure binary symlinking
+        command: sudo ln -s /usr/local/share/allure/bin/allure /usr/local/bin/allure
+    - run:
+        name: install tests dependencies
+        command: |
+          python3 -m venv venv
+          . venv/bin/activate
+          pip install -r requirements.txt
+    - run:
+        name: run tests
+        halt_build_on_fail: false
+        command: |
+          . venv/bin/activate
+          pytest --alluredir ./allure-results ./tests
+    - run:
+        name: Allure report generation (./allure-results -> allure-report)
+        command: |
+          allure generate \
+            --config /usr/local/share/allure/config/allure.yml \
+            --report-dir allure-report \
+            ./allure-results
+        when: always
+    - store_artifacts:
+        path: allure-report
+        destination: Report/Allure
+workflows:
+  version: 2
+  workflow:
+    jobs:
+    - build
