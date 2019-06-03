@@ -32,7 +32,7 @@ jobs:
         halt_build_on_fail: false
         command: |
           . venv/bin/activate
-          pytest --alluredir -n 4 ./allure-results ./tests
+          pytest -n 4  --alluredir ./allure-results ./tests
     - run:
         name: Allure report generation (./allure-results -> allure-report)
         command: |
