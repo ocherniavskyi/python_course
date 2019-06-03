@@ -4,6 +4,7 @@ from web_tests.common_fixtures.infrustructure import *
 from conftest import *
 
 
+@pytest.mark.skip
 @pytest.mark.webui
 class TestLoginPage:
 

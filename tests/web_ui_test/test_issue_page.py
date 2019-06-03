@@ -6,6 +6,7 @@ from web_tests.common_fixtures.infrustructure import *
 from conftest import *
 
 
+@pytest.mark.skip
 @pytest.mark.webui
 class TestIssueCreate:
 
@@ -26,6 +27,7 @@ class TestIssueCreate:
         assert issue_page.fields_errors[0].text == 'Summary must be less than 255 characters.'
 
 
+@pytest.mark.skip
 @pytest.mark.webui
 class TestIssueSearch:
     def test_search_an_issue(self, dashboard_page: DashboardPage, created_bug: dict):
@@ -39,6 +41,7 @@ class TestIssueSearch:
         assert search_page.is_empty_list()
 
 
+@pytest.mark.skip
 @pytest.mark.webui
 class TestIssueUpdate:
     def test_update_issue_summary(self, issue_details_page: IssueDetailsPage, created_bug: dict,
