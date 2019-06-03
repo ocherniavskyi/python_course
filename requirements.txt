@@ -9,3 +9,4 @@ pytest-html
 webdriver-manager
 git+https://github.com/yashaka/selene
 pytest-xdist
+pytest-rerunfailures
